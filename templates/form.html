@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ action }} Product</h2>
+<form class="product-form" method="post">
+    <label>
+        Name
+        <input type="text" name="name" required value="{{ product.name if product else '' }}">
+    </label>
+    <label>
+        Category
+        <input type="text" name="category" required value="{{ product.category if product else '' }}">
+    </label>
+    <label>
+        Price
+        <input type="number" name="price" step="0.01" min="0" required value="{{ product.price if product else '' }}">
+    </label>
+    <label>
+        Quantity
+        <input type="number" name="quantity" min="0" required value="{{ product.quantity if product else '' }}">
+    </label>
+    <div class="form-actions">
+        <button class="btn primary" type="submit">{{ action }}</button>
+        <a class="btn cancel" href="{{ url_for('index') }}">Cancel</a>
+    </div>
+</form>
+{% endblock %}
